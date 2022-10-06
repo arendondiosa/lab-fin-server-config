@@ -1,0 +1,22 @@
+version: "3"
+services:
+  nginx:
+    container_name: nginx
+    image: nginx
+    ports:
+      - "3000:80"
+    links:
+      - app
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    restart: always
+  app:
+    container_name: app
+    image: node:6.4.0
+    volumes:
+      - /apps-inversiones-geio/:/app/
+    environment:
+      - BASE_URL=/inversiones-geio
+    command: sh -c "cd /app/ && npm install && npm start"
+    restart: always
+
