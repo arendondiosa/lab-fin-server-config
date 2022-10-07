@@ -14,7 +14,7 @@ services:
     container_name: app
     image: node:6.4.0
     volumes:
-      - /apps-inversiones-geio/:/app/
+      - /apps/inversiones-geio/:/app/
     environment:
       - BASE_URL=/inversiones-geio
     command: sh -c "cd /app/ && npm install && npm start"
